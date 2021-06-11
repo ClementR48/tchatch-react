@@ -1,5 +1,5 @@
-import Form from "./components/Form";
-import Messages from "./components/Messages";
+import Form from "./containers/Form";
+import Messages from "./containers/Messages";
 
 
 function Chat() {

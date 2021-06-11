@@ -1,10 +1,10 @@
 import React from 'react';
 
-const Message = () => {
+const Message = ({ username, content }) => {
   return (
     <div className="message">
-      <div className="author">Super Chat</div>
-      <div className="content">Est ce que tu vas bien ?</div>
+      <div className="author">{username}</div>
+      <div className="content">{content}</div>
     </div>
   );
 };
