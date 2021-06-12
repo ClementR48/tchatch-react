@@ -1,4 +1,5 @@
-import { UPDATE_INPUT_MESSAGE } from '../actions/chat'
+import { UPDATE_INPUT_MESSAGE, ADD_MESSAGE, OPEN_SETTINGS } from '../actions/chat'
+import { getId } from '../utils';
 
 const initialState = {
   messages: [
@@ -20,6 +21,9 @@ const initialState = {
   ],
 
   inputMessage: '',
+  nickname: 'super Chat',
+
+  openButtonSettings: true,
 };
 
 function chatReducer(state = initialState, action) {
@@ -29,6 +33,27 @@ function chatReducer(state = initialState, action) {
         ...state,
         inputMessage: action.value,
       }
+    case ADD_MESSAGE: {
+
+    const newMesssage = {
+      id: getId(state.messages) + 1,
+      username: state.nickname,
+      content: state.inputMessage
+    }
+      return {
+        ...state,
+        messages: [...state.messages, newMesssage],
+
+        inputMessage: '',
+      }}
+
+    case OPEN_SETTINGS : {
+      return {
+        ...state,
+        openButtonSettings: !state.openButtonSettings
+      }
+    }
+
     default:
       return state;
   }
